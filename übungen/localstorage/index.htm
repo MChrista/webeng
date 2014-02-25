@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+function speichern() {
+	var mnr=document.getElementById('mnr').value;
+	var nam=document.getElementById('name').value;
+	var vor=document.getElementById('vorname').value;
+	var not=document.getElementById('note').value;
+	var array={mnr,nam,vor,not};
+	document.write(array[0]);
+	window.localStorage.setItem(mnr, JSON.stringify(array));
+}
+
+function lesen() {
+ 	var key = document.getElementById('mnr').value;
+ 	document.getElementById('data').value = window.localStorage.getItem(key);
+}
+</script>
+
+</head>
+<body>
+
+Vorname: <br>
+<textarea id="vorname"></textarea> <br>
+Name: <br>
+<textarea id="name"></textarea> <br>
+Matrikelnummer: <br>
+<textarea id="mnr"></textarea><br>
+Note: <br>
+<textarea id="note"></textarea><br>
+<!--Schl&uuml;ssel: <input type="text" id="key">-->
+<input type="button" value="Speichern" onclick="speichern()">
+<input type="button" value="Lesen" onclick="lesen()">
+
+</body>
+</html>

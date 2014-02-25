@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+function speichern() {
+	var mnr=document.getElementById('mnr').value;
+	var nam=document.getElementById('name').value;
+	var vor=document.getElementById('vorname').value;
+	var not=document.getElementById('note').value;
+	array=new Array(mnr,nam,vor,not);
+	window.localStorage.setItem(mnr, JSON.stringify(array));
+
+}
+
+function lesen() {
+	var key = document.getElementById('mnr').value;
+	var test2 = localStorage.getItem(key);
+	test = JSON.parse(test2);
+	document.getElementById('vorname').value=test[2];
+	document.getElementById('name').value=test[1];
+	document.getElementById('note').value=test[3];
+}
+</script>
+
+</head>
+<body>
+
+Matrikelnummer: <br>
+<textarea id="mnr"></textarea><br>
+Name: <br>
+<textarea id="name"></textarea> <br>
+Vorname: <br>
+<textarea id="vorname"></textarea> <br>
+Note: <br>
+<textarea id="note"></textarea><br>
+<input type="button" value="Speichern" onclick="speichern()">
+<input type="button" value="Lesen" onclick="lesen()">
+
+</body>
+</html>

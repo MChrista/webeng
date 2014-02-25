@@ -1,0 +1,40 @@
+<html>
+<script>
+function setCookie()
+{
+cname='user';
+var exdays=60;
+var cvalue=document.getElementById('user').value;
+var d = new Date();
+d.setTime(d.getTime()+(exdays*24*60*60*1000));
+var expires = "expires="+d.toGMTString();
+document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie()
+{
+var cname='user';
+var name = cname + "=";
+console.log(document.cookie);
+var c = document.cookie.trim();
+return c.substring(name.length,c.length);
+}
+
+function checkCookie()
+{
+var user=getCookie();
+if (user!="")
+  {
+  alert("Welcome again " + user);
+  document.getElementById('user').value=user;
+  }
+}
+
+</script>
+<body onload="checkCookie()">
+Username <br>
+<textarea id="user" oninput="setCookie();" onpropertychange="setCookie();" onkeyup="setCookie();"></textarea><br>
+</body>
+
+
+</html>
